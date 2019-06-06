@@ -70,12 +70,8 @@ class UserController extends Controller
             $plan = $request->input('selType');
             $timeplan = $request->input('selTime');
             $currency = $request->input('selCurrency');
-            $email = $user->email;
 
-            $users = \DB::table('users')->where('email', $email)->get();
-            foreach ($users as $user_get){}
-
-            $subscription->user_id = $user_get->id;
+            $subscription->user_id = $user->id;
             $subscription->name = $request->input('name_sub');
             $subscription->quantity = $request->input('quantity');
             $subscription->stripe_id = 'sub_'.time();
@@ -89,7 +85,8 @@ class UserController extends Controller
             }
             
             $user->stripe_id = $subscription->stripe_id;
-            //$user->card_brand = $subscription->stripe_plan;
+            $subscription->save();
+            $user->save();
         } else
         {
            $response = 'Email already, insert other';
