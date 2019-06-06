@@ -15,7 +15,7 @@
     return view('welcome');
 });*/
 
-Route::view('/', 'init');
+//Route::view('/', 'init');
 
 Route::resource('user', 'UserController');
 
@@ -23,4 +23,4 @@ Route::resource('company', 'CompanyController');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'InitController@index');
