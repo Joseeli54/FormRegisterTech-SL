@@ -3,11 +3,7 @@
 
 @section('content')
 
-
-
-@if (Auth::check())
-
-	@if(Auth::user()->hasRole('admin'))
+	@if(Auth::user()->is_employee)
    <div class="options">
 	<button class="btn" onclick="OpenorClose()"> 
       <span id="plus" class="fa fa-plus" aria-hidden="true"></span>
@@ -33,6 +29,14 @@
 
 				   	<h4> User Data </h4>
 	   		        <br>
+					
+					<div class="form-group">
+	   		        <select class="form-control select-subscription" name="selRole">
+                          <option value="-1" disabled>Role</option>
+                          <option value="0">User</option>
+                          <option value="1">Admin</option>
+                    </select>
+                    </div>
 	   		        
 	   		        <label for="">Name</label>
 					<div class="form-group">
@@ -131,13 +135,6 @@
             You have not access this site
         </div>
         @endif
-
- @else
-       <br>
-        <div class="text-center subreport-info">
-            You have not access this site
-        </div>
- @endif
 
        <br> <br>
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Plan;
+use Auth;
 use App\User;
 use App\Role;
 use App\Subscription;
@@ -68,6 +69,11 @@ class UserController extends Controller
             $user->email = $request->input('email');
             $user->company = $request->input('company');
             $user->employees = $request->input('employees');
+            if($request->input('selRole') == 1){
+                $user->is_employee = true;
+            }else{
+                $user->is_employee = false;
+            }
             $user->problems = $request->input('problems');
             $user->industry = $request->input('industry');
             $user->password = Hash::make($request->input('password'));
