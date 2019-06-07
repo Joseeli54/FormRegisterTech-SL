@@ -9,7 +9,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header" style="background-color: #f91c52; color: white; border: #f91c52">{{ __('Enter the User Registry') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">

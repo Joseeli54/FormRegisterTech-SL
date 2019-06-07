@@ -18,8 +18,8 @@
 //Route::view('/', 'init');
 
 Route::resource('user', 'UserController');
-
 Route::resource('company', 'CompanyController');
+Route::view('authorization', 'no-auth');
 
 Auth::routes();
 
