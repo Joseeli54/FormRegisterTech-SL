@@ -22,6 +22,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     /**
@@ -57,27 +58,27 @@ class UserController extends Controller
         
         $users_email = \DB::table('users')->get();
         foreach ($users_email as $us){
-            if($us->email == $request->input('email')){
+            if($us->email == $request->email){
                 $validar = 1;
             }
         }
 
         if($validar == 0){
             $user = new User();
-            $user->name = $request->input('name');
-            $user->lastname = $request->input('lastName');
-            $user->email = $request->input('email');
-            $user->company = $request->input('company');
-            $user->employees = $request->input('employees');
-            if($request->input('selRole') == 1){
+            $user->name = $request->name;
+            $user->lastname = $request->lastName;
+            $user->email = $request->email;
+            $user->company = $request->company;
+            $user->employees = $request->employees;
+            if($request->selRole == 1){
                 $user->is_employee = true;
             }else{
                 $user->is_employee = false;
             }
-            $user->problems = $request->input('problems');
-            $user->industry = $request->input('industry');
-            $user->password = Hash::make($request->input('password'));
-            $user->remember_token = $request->input('_token');
+            $user->problems = $request->problems;
+            $user->industry = $request->industry;
+            $user->password = Hash::make($request->password);
+            $user->remember_token = $request->_token;
             $user->save();
 
             $user
@@ -85,13 +86,13 @@ class UserController extends Controller
             ->attach(Role::where('name', 'user')->first());
 
             $subscription = new Subscription();
-            $plan = $request->input('selType');
-            $timeplan = $request->input('selTime');
-            $currency = $request->input('selCurrency');
+            $plan = $request->selType;
+            $timeplan = $request->selTime;
+            $currency = $request->selCurrency;
 
             $subscription->user_id = $user->id;
-            $subscription->name = $request->input('name_sub');
-            $subscription->quantity = $request->input('quantity');
+            $subscription->name = $request->name_sub;
+            $subscription->quantity = $request->quantity;
             $subscription->stripe_id = 'sub_'.time();
 
             if($plan == 0){
