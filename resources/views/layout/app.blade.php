@@ -54,19 +54,5 @@
     <div class="container py-4">
 		@yield('content')
 	</div>
-	<footer>
-		<div id = "finalPart">
-				<div class="col-md-12 text-center">
-					<p id="texto-footer">Year of the registration: 
-						<script type="text/javascript">
-							var fecha = new Date();
-							var anio = fecha.getFullYear();
-							var texto = document.getElementById('texto-footer');
-							texto.innerText += ' ' + anio;
-						</script>
-					</p>
-				</div>
-		</div>
-	</footer>
 </body>
 </html>
