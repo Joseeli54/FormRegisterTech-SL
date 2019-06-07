@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>Form - @yield('title')</title>
-	<link rel="icon" href="{{asset('img/icon.jpg')}}" type="image/jpg">
+	<link rel="icon" href="https://thefutures.io/img/favicon64x64.png" type="image/jpg">
 	
 	<!-- Styles -->
 	<link rel="stylesheet" href="{{asset('https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css')}}" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -22,6 +22,7 @@
 <body>
 	<nav class="navbar navbar-dark" id = "initPart">
 		<a href="/" class="navbar-brand" class="zero-padding">
+        <img src="../img/logotipo.png" style="height: 40px; float: left; margin-right: 6%">
 		<div id="title"><b> CLIENT REGISTRATION <b></div>
 		</a>
 
@@ -54,19 +55,5 @@
     <div class="container py-4">
 		@yield('content')
 	</div>
-	<footer>
-		<div id = "finalPart">
-				<div class="col-md-12 text-center">
-					<p id="texto-footer">Year of the registration: 
-						<script type="text/javascript">
-							var fecha = new Date();
-							var anio = fecha.getFullYear();
-							var texto = document.getElementById('texto-footer');
-							texto.innerText += ' ' + anio;
-						</script>
-					</p>
-				</div>
-		</div>
-	</footer>
 </body>
 </html>
