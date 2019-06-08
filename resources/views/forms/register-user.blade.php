@@ -3,7 +3,6 @@
 
 @section('content')
 
-	@if(Auth::user()->is_employee)
    <div class="options">
 	<button class="btn" onclick="OpenorClose()"> 
       <span id="plus" class="fa fa-plus" aria-hidden="true"></span>
@@ -129,13 +128,6 @@
 
 				</form>
 	   </div>
-		@else
-		    <br>
-        <div class="text-center subreport-info">
-            You have not access this site
-        </div>
-        @endif
-
        <br> <br>
 
        <script src="{{ asset('js/validar_user.js') }}"></script>
